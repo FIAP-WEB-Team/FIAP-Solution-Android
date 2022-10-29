@@ -6,4 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <include layout="@layout/action_bar"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
