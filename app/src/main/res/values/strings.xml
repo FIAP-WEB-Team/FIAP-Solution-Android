@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">AndroidSolution</string>
     <string name="gol_name">GOL</string>
+    <string name="passenger_text_header">Preencha os dados do passageiro</string>
 </resources>
