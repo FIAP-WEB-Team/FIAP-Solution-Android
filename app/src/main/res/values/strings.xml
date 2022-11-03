@@ -2,4 +2,6 @@
     <string name="app_name">AndroidSolution</string>
     <string name="gol_name">GOL</string>
     <string name="passenger_text_header">Preencha os dados do passageiro</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
