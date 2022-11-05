@@ -1,4 +1,4 @@
-package com.fiapon.androidsolution
+package com.fiapon.androidsolution.ui
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -6,11 +6,11 @@ import androidx.lifecycle.ViewModel
 class PassengerViewModel : ViewModel() {
     var enabledFooterButton = MutableLiveData<Boolean>(false)
 
-    var firstName = MutableLiveData<String>("")
-    var lastName = MutableLiveData<String>("")
-    var birthDate = MutableLiveData<String>("")
-    var gender = MutableLiveData<String>("")
-    var nationality = MutableLiveData<String>("")
+    var firstName = MutableLiveData("")
+    var lastName = MutableLiveData("")
+    var birthDate = MutableLiveData("")
+    var gender = MutableLiveData("")
+    var nationality = MutableLiveData("")
 
 
     fun validateFields() {

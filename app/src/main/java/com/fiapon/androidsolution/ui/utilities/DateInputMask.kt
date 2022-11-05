@@ -1,4 +1,4 @@
-package com.fiapon.androidsolution.utilities
+package com.fiapon.androidsolution.ui.utilities
 
 import android.text.Editable
 import android.text.TextWatcher

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav_graph"
+    app:startDestination="@id/loginFragment">
+
+    <activity
+        android:id="@+id/passengerDataActivity"
+        android:name="com.fiapon.androidsolution.ui.PassengerDataActivity"
+        android:label="activity_passenger_data"
+        tools:layout="@layout/activity_passenger_data" />
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.fiapon.androidsolution.ui.auth.LoginFragment"
+        android:label="LoginFragment"
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/action_loginFragment_to_passengerDataActivity2"
+            app:destination="@id/passengerDataActivity" />
+    </fragment>
+
+</navigation>

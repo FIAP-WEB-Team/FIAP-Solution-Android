@@ -1,4 +1,4 @@
-package com.fiapon.androidsolution
+package com.fiapon.androidsolution.ui
 
 import android.os.Bundle
 import android.text.InputFilter
@@ -7,7 +7,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.ViewModelProvider
-import com.fiapon.androidsolution.utilities.DateInputMask
+import com.fiapon.androidsolution.R
+import com.fiapon.androidsolution.ui.utilities.DateInputMask
 import kotlinx.android.synthetic.main.activity_passenger_data.*
 import kotlinx.android.synthetic.main.footer_bar.*
 import kotlinx.android.synthetic.main.footer_bar.view.*
