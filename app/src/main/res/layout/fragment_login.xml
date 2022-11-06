@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
     <TextView
         android:id="@+id/tvAppName"
         android:layout_width="wrap_content"
@@ -17,7 +16,6 @@
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
 
     <LinearLayout
         android:id="@+id/containerLogin"
@@ -31,59 +29,81 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvSubTitleLogin">
 
-
         <LinearLayout
             android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginBottom="16dp">
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:orientation="vertical">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textStyle="bold"
-                android:text="Email" />
+                android:text="Email"
+                android:textSize="16dp"
+                android:textStyle="bold" />
 
             <EditText
-                android:id="@+id/etEmailLogin"
+                android:id="@+id/editTextEmailLogin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textStyle="bold"
+                android:inputType="textEmailAddress"
                 android:maxLines="1"
-                tools:text="heiderlopes@apps.com.br" />
+                android:textStyle="bold"
+                tools:hint="giba@fiap.com.br" />
+            <TextView
+                android:id="@+id/txtEmailError"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginBottom="16dp">
+            android:layout_marginBottom="16dp"
+            android:orientation="vertical">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textStyle="bold"
-                android:text="Password" />
+                android:textSize="16sp"
+                android:text="Senha"
+                android:textStyle="bold" />
 
-            <EditText
-                android:id="@+id/etPasswordLogin"
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textStyle="bold"
-                android:maxLines="1"
-                android:inputType="textPassword"
-                tools:text="heiderlopes@apps.com.br" />
+                android:layout_marginTop="16dp"
+                app:passwordToggleEnabled="true">
+
+                <EditText
+                    android:id="@+id/editTextPasswordLogin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword"
+                    android:maxLines="1"
+                    android:padding="0dp"
+                    android:textStyle="bold"
+                    tools:text="heiderlopes@apps.com.br" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/txtPasswordError"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold" />
+
         </LinearLayout>
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btLogin"
-            android:text="Login"
-            android:background="@color/orange_light"
+            android:id="@+id/btnLogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:maxLines="1"/>
+            android:background="@color/orange_light"
+            android:maxLines="1"
+            android:text="Login"
+            android:textStyle="bold" />
 
     </LinearLayout>
 
@@ -104,7 +124,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginBottom="24dp"
-        android:text="Reset Password"
+        android:text="Resetar Senha"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guideline"
         app:layout_constraintStart_toStartOf="parent" />
@@ -116,7 +136,7 @@
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="24dp"
         android:gravity="end"
-        android:text="Create Account"
+        android:text="Criar Conta"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline" />
