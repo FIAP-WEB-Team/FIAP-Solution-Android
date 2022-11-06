@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "861986802706",
-    "project_id": "fiap-test-72b62",
-    "storage_bucket": "fiap-test-72b62.appspot.com"
+    "project_number": "592727489203",
+    "project_id": "golapi-5c457",
+    "storage_bucket": "golapi-5c457.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:861986802706:android:d4de27db9e0f26cb7e9ccb",
+        "mobilesdk_app_id": "1:592727489203:android:44af8655358caad82acec6",
         "android_client_info": {
           "package_name": "com.fiapon.androidsolution"
         }
       },
       "oauth_client": [
         {
-          "client_id": "861986802706-mdgr3uj68gmaaaif4317lh646popteih.apps.googleusercontent.com",
+          "client_id": "592727489203-kbiqtdiq8dio6fu2253j00vda2dt21dc.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCf511r1Hm1XZzxogZOeOYMQh3TQ0uK2dI"
+          "current_key": "AIzaSyD9W_lxxr6bRuMse3-EPRyOCA6aD2_xyLc"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "861986802706-mdgr3uj68gmaaaif4317lh646popteih.apps.googleusercontent.com",
+              "client_id": "592727489203-kbiqtdiq8dio6fu2253j00vda2dt21dc.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
