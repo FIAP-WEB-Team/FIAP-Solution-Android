@@ -3,22 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_nav_graph"
-    app:startDestination="@id/loginTestFragment">
+    app:startDestination="@id/flightSelectionFragment">
 
-    <activity
-        android:id="@+id/passengerDataActivity"
-        android:name="com.fiapon.androidsolution.ui.PassengerDataActivity"
-        android:label="activity_passenger_data"
-        tools:layout="@layout/activity_passenger_data" />
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.fiapon.androidsolution.ui.login.LoginFragment"
         android:label="LoginFragment"
         tools:layout="@layout/fragment_login"/>
     <fragment
-        android:id="@+id/loginTestFragment"
-        android:name="com.fiapon.androidsolution.ui.LoginTestFragment"
+        android:id="@+id/flightSelectionFragment"
+        android:name="com.fiapon.androidsolution.ui.flight_selection.FlightSelectionFragment"
         android:label="fragment_login_test"
-        tools:layout="@layout/fragment_login_test" />
+        tools:layout="@layout/fragment_flight_selection" />
 
 </navigation>
