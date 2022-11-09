@@ -1,3 +1,6 @@
+/**
+ * Created by LucasS
+ */
 package com.fiapon.androidsolution.ui.auth
 
 import androidx.lifecycle.MutableLiveData
