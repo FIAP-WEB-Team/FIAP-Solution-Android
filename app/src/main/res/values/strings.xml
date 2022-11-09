@@ -2,8 +2,17 @@
     <string name="app_name">AndroidSolution</string>
     <string name="gol_name">GOL</string>
     <string name="passenger_text_header">Preencha os dados do passageiro</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="select_your_flight">Escolha o seu voo</string>
     <string name="cost_info">Todas as nossas tarifas incluem o valor da taxa de embarque</string>
+    <string name="flight_date_explanation">Sexta, 16/04\n - A partir de 643,00</string>
+    <string name="flight_origin">Origem</string>
+    <string name="flight_example">SDU - 08:00</string>
+    <string name="flight_destiny">Destino</string>
+    <string name="flight_example2">POA - 10:00</string>
+    <string name="airplane_icon_desc">Ícone avião</string>
+    <string name="price_fanfare">A partir de</string>
+    <string name="flight_price_example">R$ 612,20</string>
+    <string name="select_flight_text">Escolher viagem</string>
+    <string name="any_text">Any</string>
 </resources>
