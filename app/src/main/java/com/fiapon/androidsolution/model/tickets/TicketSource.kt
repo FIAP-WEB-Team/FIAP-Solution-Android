@@ -4,5 +4,4 @@
 package com.fiapon.androidsolution.model.tickets
 
 class TicketSource {
-
 }

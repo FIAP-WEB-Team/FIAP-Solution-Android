@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.ViewModelProvider
 import com.fiapon.androidsolution.R
+import com.fiapon.androidsolution.model.flights.Flight
 import com.fiapon.androidsolution.ui.utilities.DateInputMask
 import kotlinx.android.synthetic.main.activity_passenger_data.*
 import kotlinx.android.synthetic.main.footer_bar.*
@@ -25,6 +26,8 @@ class PassengerDataActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_passenger_data)
 
+        var flight = intent.extras?.getParcelable("selected_flight", Flight::class.java)
+
         viewModel = ViewModelProvider.NewInstanceFactory().create(PassengerViewModel::class.java)
         footer.footerButton.isEnabled = false
 
@@ -34,22 +37,22 @@ class PassengerDataActivity : AppCompatActivity() {
     }
 
     private fun setImportedLayoutsTexts() {
-        firstNameEditText.textView.text = "PRIMEIRO NOME:"
-        firstNameEditText.editText.hint = "Digite seu primeiro nome"
+        firstNameEditText.textView.text = getString(R.string.first_name)
+        firstNameEditText.editText.hint = getString(R.string.first_name_hint)
 
-        lastNameEditText.textView.text = "ÚLTIMO NOME:"
-        lastNameEditText.editText.hint = "Digite seu último nome"
+        lastNameEditText.textView.text = getString(R.string.last_name)
+        lastNameEditText.editText.hint = getString(R.string.last_name_hint)
 
-        birthDateEditText.textView.text = "DATA DE NASCIMENTO:"
+        birthDateEditText.textView.text = getString(R.string.birth_date)
         birthDateEditText.editText.hint = "dd/mm/aaaa"
 
-        genderEditText.textView.text = "GÊNERO:"
+        genderEditText.textView.text = getString(R.string.gender)
         genderEditText.editText.hint = "-------"
 
-        nationalityEditText.textView.text = "NACIONALIDADE:"
-        nationalityEditText.editText.hint = "País"
+        nationalityEditText.textView.text = getString(R.string.nationality)
+        nationalityEditText.editText.hint = getString(R.string.nationality_hint)
 
-        footer.footerButton.text = "Ir para Pagamento"
+        footer.footerButton.text = getString(R.string.goto_payment_text)
     }
 
     private fun setEditTextFilters() {

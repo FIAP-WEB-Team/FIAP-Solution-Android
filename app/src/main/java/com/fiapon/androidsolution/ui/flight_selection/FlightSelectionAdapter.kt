@@ -4,40 +4,34 @@
 package com.fiapon.androidsolution.ui.flight_selection
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.fiapon.androidsolution.R
+import com.fiapon.androidsolution.model.flights.Flight
+import com.fiapon.androidsolution.model.flights.FlightSource
 
-class FlightSelectionAdapter(private val dataSet: Array<String>) :
-    RecyclerView.Adapter<FlightSelectionAdapter.ViewHolder>() {
+class FlightSelectionAdapter(private val viewModel: FlightSelectionViewModel) :
+    RecyclerView.Adapter<FlightViewHolder>() {
 
-    /**
-     * Provide a reference to the type of views that you are using
-     * (custom ViewHolder).
-     */
-    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val textView: TextView
+    private val dataSource = FlightSource()
 
-        init {
-            // Define click listener for the ViewHolder's View.
-            textView = view.findViewById(R.id.textView)
-        }
-    }
-
-    override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
+    override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): FlightViewHolder {
         val view = LayoutInflater.from(viewGroup.context)
             .inflate(R.layout.flight_item, viewGroup, false)
+        viewModel.setNumFlights(itemCount)
 
-        return ViewHolder(view)
+        return FlightViewHolder(view, viewModel)
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-
+    override fun onBindViewHolder(holder: FlightViewHolder, position: Int) {
+        holder.bind(position, dataSource.flightDummyData[position])
     }
 
     override fun getItemCount(): Int {
-        TODO("Not yet implemented")
+        return dataSource.flightDummyData.size
+    }
+
+    fun getDataAt(position: Int): Flight {
+        return dataSource.flightDummyData[position]
     }
 }
