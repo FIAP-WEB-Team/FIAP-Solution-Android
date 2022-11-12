@@ -6,24 +6,33 @@ package com.fiapon.androidsolution.ui
 import android.os.Bundle
 import android.text.InputFilter
 import android.text.InputType
+import android.widget.RadioButton
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.ViewModelProvider
 import com.fiapon.androidsolution.R
+import com.fiapon.androidsolution.model.flights.Flight
+import com.fiapon.androidsolution.model.passengers.Passenger
+import com.fiapon.androidsolution.ui.auth.RequestState
 import com.fiapon.androidsolution.ui.utilities.DateInputMask
 import kotlinx.android.synthetic.main.activity_passenger_data.*
 import kotlinx.android.synthetic.main.footer_bar.*
 import kotlinx.android.synthetic.main.footer_bar.view.*
 import kotlinx.android.synthetic.main.main_edit_text.view.*
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 
 class PassengerDataActivity : AppCompatActivity() {
 
     private lateinit var viewModel: PassengerViewModel
+    private var selectedFlight: Flight? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_passenger_data)
+
+        selectedFlight = intent.extras?.getParcelable("selected_flight", Flight::class.java)
 
         viewModel = ViewModelProvider.NewInstanceFactory().create(PassengerViewModel::class.java)
         footer.footerButton.isEnabled = false
@@ -31,25 +40,26 @@ class PassengerDataActivity : AppCompatActivity() {
         setImportedLayoutsTexts()
         setEditTextFilters()
         createListeners()
+        createObservers()
     }
 
     private fun setImportedLayoutsTexts() {
-        firstNameEditText.textView.text = "PRIMEIRO NOME:"
-        firstNameEditText.editText.hint = "Digite seu primeiro nome"
+        firstNameEditText.textView.text = getString(R.string.first_name)
+        firstNameEditText.editText.hint = getString(R.string.first_name_hint)
 
-        lastNameEditText.textView.text = "ÚLTIMO NOME:"
-        lastNameEditText.editText.hint = "Digite seu último nome"
+        lastNameEditText.textView.text = getString(R.string.last_name)
+        lastNameEditText.editText.hint = getString(R.string.last_name_hint)
 
-        birthDateEditText.textView.text = "DATA DE NASCIMENTO:"
+        birthDateEditText.textView.text = getString(R.string.birth_date)
         birthDateEditText.editText.hint = "dd/mm/aaaa"
 
-        genderEditText.textView.text = "GÊNERO:"
+        genderEditText.textView.text = getString(R.string.gender)
         genderEditText.editText.hint = "-------"
 
-        nationalityEditText.textView.text = "NACIONALIDADE:"
-        nationalityEditText.editText.hint = "País"
+        nationalityEditText.textView.text = getString(R.string.nationality)
+        nationalityEditText.editText.hint = getString(R.string.nationality_hint)
 
-        footer.footerButton.text = "Ir para Pagamento"
+        footer.footerButton.text = getString(R.string.goto_payment_text)
     }
 
     private fun setEditTextFilters() {
@@ -63,11 +73,7 @@ class PassengerDataActivity : AppCompatActivity() {
     private fun createListeners() {
         footer.footerButton.setOnClickListener {
             if (footerButton.isEnabled)
-                Toast.makeText(
-                    this,
-                    "Payment section is only available for premium users",
-                    Toast.LENGTH_SHORT
-                ).show()
+                viewModel.createTicket(selectedFlight!!)
         }
         firstNameEditText.editText.addTextChangedListener(
             { _, _, _, _ -> },
@@ -102,8 +108,82 @@ class PassengerDataActivity : AppCompatActivity() {
                 viewModel.validateFields()
             },
             {})
+        radioGroup.setOnCheckedChangeListener { _, checkedId -> radioGroupChanged(checkedId) }
+        radioGroupChanged(radioGroup.checkedRadioButtonId)
+    }
+
+    private fun createObservers() {
         viewModel.enabledFooterButton.observe(this) {
             footer.footerButton.isEnabled = it
+        }
+        viewModel.checkDataState.observe(this) {
+            when (it) {
+                is RequestState.Error -> {
+                    loadingHandler(false)
+                    Toast.makeText(
+                        this,
+                        "Não foi possível reservar a passagem: " + it.throwable.message.toString(),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+                is RequestState.Loading -> {
+                    loadingHandler(true)
+                }
+                is RequestState.Success -> {
+                    loadingHandler(false)
+                    Toast.makeText(this, "Passagem reservada com sucesso!", Toast.LENGTH_SHORT)
+                        .show()
+                }
+            }
+        }
+    }
+
+    private fun radioGroupChanged(checkedId: Int) {
+        val radio = findViewById<RadioButton>(checkedId)
+
+        if (radio.text == getString(R.string.yes_text)) {
+            passengerInfoToView(
+                Passenger(
+                    -1,
+                    LocalDate.of(1995, 3, 11),
+                    "Giba",
+                    "dos Santos",
+                    "Masculino",
+                    "Brasil"
+                )
+            )
+        } else {
+            passengerInfoToView(
+                Passenger(
+                    -1,
+                    LocalDate.now(),
+                    "",
+                    "",
+                    "",
+                    ""
+                ), true
+            )
+        }
+    }
+
+    private fun passengerInfoToView(passenger: Passenger, emptyDate: Boolean = false) {
+        val dateStr =
+            if (emptyDate) "" else passenger.birthDate.format(DateTimeFormatter.ofPattern("ddMMyyyy"))
+
+        firstNameEditText.editText.setText(passenger.firstName)
+        lastNameEditText.editText.setText(passenger.lastName)
+        birthDateEditText.editText.setText(dateStr)
+        genderEditText.editText.setText(passenger.gender)
+        nationalityEditText.editText.setText(passenger.nationality)
+    }
+
+    private fun loadingHandler(isLoading: Boolean) {
+        if (isLoading) {
+            footer.footerButton.text = getString(R.string.loading_text)
+            footer.footerButton.isEnabled = false
+        } else {
+            footer.footerButton.text = getString(R.string.goto_payment_text)
+            footer.footerButton.isEnabled = true
         }
     }
 

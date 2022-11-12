@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/flightItemConstraintLayout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
     <LinearLayout
-        android:id="@+id/linearLayout"
+        android:id="@+id/flightItemLinearLayout"
         android:layout_width="match_parent"
         android:layout_height="67dp"
         android:layout_marginStart="16dp"
@@ -15,92 +16,91 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:gravity="center_horizontal"
             android:layout_weight="1">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/flight_origin"
                 android:textColor="@color/black"
-                android:layout_weight="1"
                 android:textSize="14sp" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:id="@+id/txtViewFlightDeparture"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:text="@string/flight_example"
                 android:textColor="@color/black"
                 android:textSize="16sp"
-                android:layout_weight="1"
                 android:textStyle="bold" />
         </LinearLayout>
 
         <ImageView
             android:id="@+id/imageAirplane"
-            android:layout_width="32dp"
+            android:layout_width="0dp"
             android:layout_height="32dp"
-            android:layout_gravity="center_vertical"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:scaleType="fitXY"
-            android:layout_weight="0.1"
+            android:layout_gravity="center"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:scaleType="center"
+            android:layout_weight="0.2"
             app:srcCompat="@drawable/ic_baseline_airplane"
             android:contentDescription="@string/airplane_icon_desc" />
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:gravity="center_horizontal"
             android:layout_weight="1">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/flight_destiny"
+                android:textAlignment="viewEnd"
                 android:textColor="@color/black"
-                android:layout_weight="1"
                 android:textSize="14sp" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:id="@+id/txtViewFlightArrival"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:text="@string/flight_example2"
+                android:textAlignment="viewEnd"
                 android:textColor="@color/black"
-                android:layout_weight="1"
                 android:textSize="16sp"
                 android:textStyle="bold" />
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginEnd="16dp"
+            android:layout_marginStart="8dp"
             android:orientation="vertical"
-            android:gravity="center_horizontal"
             android:layout_weight="1">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/price_fanfare"
+                android:textAlignment="viewEnd"
                 android:textColor="@color/black"
-                android:layout_weight="1"
                 android:textSize="14sp" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:id="@+id/txtViewFlightPrice"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:text="@string/flight_price_example"
+                android:textAlignment="viewEnd"
                 android:textColor="@color/black"
-                android:layout_weight="1"
                 android:textSize="16sp"
                 android:textStyle="bold" />
         </LinearLayout>
@@ -111,6 +111,6 @@
         style="@style/HorizontalDivider"
         android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/flightItemLinearLayout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

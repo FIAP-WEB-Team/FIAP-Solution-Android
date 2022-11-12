@@ -3,8 +3,11 @@
  */
 package com.fiapon.androidsolution.model.flights
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
 import java.time.LocalDateTime
 
+@Parcelize
 data class Flight(
     val number: Int,
     val departure: String,
@@ -12,4 +15,5 @@ data class Flight(
     val price:Double,
     val arrival: String,
     val arrivalDate: LocalDateTime,
-)
+    val price: Double
+) : Parcelable

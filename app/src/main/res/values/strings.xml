@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">AndroidSolution</string>
     <string name="gol_name">GOL</string>
-    <string name="passenger_text_header">Preencha os dados do passageiro</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!--Flight selection texts-->
     <string name="select_your_flight">Escolha o seu voo</string>
     <string name="cost_info">Todas as nossas tarifas incluem o valor da taxa de embarque</string>
     <string name="flight_date_explanation">Sexta, 16/04\n - A partir de 643,00</string>
@@ -14,5 +14,24 @@
     <string name="price_fanfare">A partir de</string>
     <string name="flight_price_example">R$ 612,20</string>
     <string name="select_flight_text">Escolher viagem</string>
+
+    <!--Passenger data texts-->
+    <string name="passenger_text_header">Preencha os dados do passageiro</string>
+    <string name="first_name">PRIMEIRO NOME:</string>
+    <string name="first_name_hint">Digite seu primeiro nome</string>
+    <string name="last_name">ÚLTIMO NOME:</string>
+    <string name="last_name_hint">Digite seu último nome</string>
+    <string name="birth_date">DATA DE NASCIMENTO:</string>
+    <string name="gender">GÊNERO:</string>
+    <string name="nationality">NACIONALIDADE:</string>
+    <string name="nationality_hint">País</string>
+    <string name="goto_payment_text">Ir para Pagamento</string>
+    <string name="loading_text">Carregando…</string>
     <string name="any_text">Any</string>
+    <string name="yes_text">Sim</string>
+    <string name="no_text">Não</string>
+    <string name="adult_data_text">Dados do adulto</string>
+    <string name="required_fields_hint">Todos os campos são obrigatórios</string>
+    <string name="passenger_default_name">Giba</string>
+    <string name="same_person_question">, você é o passageiro dessa viagem?</string>
 </resources>

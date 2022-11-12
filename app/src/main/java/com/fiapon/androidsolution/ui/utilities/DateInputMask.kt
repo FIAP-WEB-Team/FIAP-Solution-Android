@@ -21,7 +21,6 @@ class DateInputMask(val input: EditText, val minValidYear: Int, val maxValidYear
     private val dateEntryWatcher = object : TextWatcher {
 
         var edited = false
-        val dividerCharacter = "/"
 
         override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
             if (edited) {
@@ -30,10 +29,8 @@ class DateInputMask(val input: EditText, val minValidYear: Int, val maxValidYear
             }
             var working = getEditText()
 
-            working = manageDateDivider(working, 2, start, before)
-            working = manageDateDivider(working, 5, start, before)
-            if (working.length == 10)
-                working = validateDate(working)
+            working = manageDateDivider(working)
+            if (working.length == 10) working = validateDate(working)
 
             edited = true
             input.setText(working)
@@ -41,25 +38,21 @@ class DateInputMask(val input: EditText, val minValidYear: Int, val maxValidYear
         }
 
         private fun manageDateDivider(
-            working: String,
-            position: Int,
-            start: Int,
-            before: Int
+            working: String
         ): String {
-            if (working.length == position) {
-                return if (before <= position && start < position)
-                    working + dividerCharacter
-                else
-                    working.dropLast(1)
-            }
-            return working
+            val digits = working.filter { it.isDigit() }
+
+            return if (digits.length <= 2)
+                digits
+            else if (digits.length <= 4)
+                digits.substring(0, 2) + "/" + digits.substring(2)
+            else
+                digits.substring(0, 2) + "/" + digits.substring(2, 4) + "/" + digits.substring(4)
         }
 
         private fun getEditText(): String {
-            return if (input.text.length >= 10)
-                input.text.toString().substring(0, 10)
-            else
-                input.text.toString()
+            return if (input.text.length >= 10) input.text.toString().substring(0, 10)
+            else input.text.toString()
         }
 
         private fun validateDate(date: String): String {
