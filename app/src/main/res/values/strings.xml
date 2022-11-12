@@ -26,5 +26,12 @@
     <string name="nationality">NACIONALIDADE:</string>
     <string name="nationality_hint">País</string>
     <string name="goto_payment_text">Ir para Pagamento</string>
+    <string name="loading_text">Carregando…</string>
     <string name="any_text">Any</string>
+    <string name="yes_text">Sim</string>
+    <string name="no_text">Não</string>
+    <string name="adult_data_text">Dados do adulto</string>
+    <string name="required_fields_hint">Todos os campos são obrigatórios</string>
+    <string name="passenger_default_name">Giba</string>
+    <string name="same_person_question">, você é o passageiro dessa viagem?</string>
 </resources>

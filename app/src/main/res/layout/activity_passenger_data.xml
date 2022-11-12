@@ -37,7 +37,7 @@
             android:layout_marginStart="24dp"
             android:layout_marginTop="5dp"
             android:gravity="bottom"
-            android:text="Giba"
+            android:text="@string/passenger_default_name"
             android:textColor="@color/black"
             android:textSize="25sp"
             app:layout_constraintStart_toStartOf="parent"
@@ -50,7 +50,7 @@
             android:layout_marginStart="0dp"
             android:layout_marginTop="5dp"
             android:gravity="bottom"
-            android:text=", você é o passageiro dessa viagem?"
+            android:text="@string/same_person_question"
             android:textColor="@android:color/darker_gray"
             android:textSize="20sp"
             app:layout_constraintStart_toEndOf="@+id/passengerNameTextView"
@@ -71,14 +71,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:buttonTint="@color/orange_strong"
-                android:text="Sim"/>
+                android:text="@string/yes_text"/>
             <RadioButton
                 android:id="@+id/noRadioButton"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:buttonTint="@color/orange_strong"
                 android:layout_marginStart="25dp"
-                android:text="Não"/>
+                android:text="@string/no_text"/>
         </RadioGroup>
 
         <TextView
@@ -88,7 +88,7 @@
             android:layout_marginStart="24dp"
             android:layout_marginTop="25dp"
             android:gravity="bottom"
-            android:text="Dados do adulto"
+            android:text="@string/adult_data_text"
             android:textColor="@color/black"
             android:textSize="25sp"
             app:layout_constraintStart_toStartOf="parent"
@@ -101,7 +101,7 @@
             android:layout_marginStart="24dp"
             android:layout_marginTop="15dp"
             android:gravity="bottom"
-            android:text="Todos os campos são obrigatórios"
+            android:text="@string/required_fields_hint"
             android:textColor="@android:color/darker_gray"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"

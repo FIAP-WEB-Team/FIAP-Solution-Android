@@ -3,6 +3,7 @@
  */
 package com.fiapon.androidsolution.ui.flight_selection
 
+import android.annotation.SuppressLint
 import android.view.View
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -44,6 +45,7 @@ class FlightViewHolder(private val view: View, viewModel: FlightSelectionViewMod
             flightItemLayout.setBackgroundColor(ContextCompat.getColor(view.context, R.color.white))
     }
 
+    @SuppressLint("SetTextI18n")
     fun bind(position: Int, data: Flight) {
         this.position = position
 
