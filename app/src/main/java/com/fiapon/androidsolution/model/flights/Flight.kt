@@ -9,6 +9,7 @@ data class Flight(
     val number: Int,
     val departure: String,
     val departureDate: LocalDateTime,
+    val price:Double,
     val arrival: String,
     val arrivalDate: LocalDateTime,
 )

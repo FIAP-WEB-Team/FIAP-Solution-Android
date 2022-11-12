@@ -4,4 +4,5 @@
 package com.fiapon.androidsolution.model.passengers
 
 class PassengerSource {
+
 }
