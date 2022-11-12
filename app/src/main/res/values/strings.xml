@@ -34,4 +34,7 @@
     <string name="required_fields_hint">Todos os campos são obrigatórios</string>
     <string name="passenger_default_name">Giba</string>
     <string name="same_person_question">, você é o passageiro dessa viagem?</string>
+    <string name="no_flight_found">Nenhum voo encontrado para o dia selecionado</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

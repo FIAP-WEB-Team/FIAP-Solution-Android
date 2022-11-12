@@ -36,6 +36,7 @@ class FlightSelectionFragment : BaseAuthFragment() {
         footer.footerButton.isEnabled = false
 
         createListeners()
+        createObservers()
     }
 
     private fun createListeners() {
@@ -46,6 +47,12 @@ class FlightSelectionFragment : BaseAuthFragment() {
                 intent.putExtra("selected_flight", adapter.getDataAt(position) as Parcelable)
                 startActivity(intent)
             }
+        }
+    }
+
+    private fun createObservers(){
+        viewModel.noFlightAvailable.observe(viewLifecycleOwner) {
+            noFlightAvailable.visibility = if (it) View.INVISIBLE else View.VISIBLE
         }
         viewModel.enabledSelectButton.observe(viewLifecycleOwner) {
             footer.footerButton.isEnabled = it

@@ -6,7 +6,7 @@ package com.fiapon.androidsolution.model.flights
 import java.time.LocalDateTime
 
 class FlightSource {
-    val flightDummyData = mutableListOf(
+    val flightDummyData = mutableListOf<Flight>(
         Flight(
             12344,
             "Budapeste",

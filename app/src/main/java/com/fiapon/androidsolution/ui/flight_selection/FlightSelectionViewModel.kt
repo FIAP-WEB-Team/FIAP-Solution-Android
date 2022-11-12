@@ -9,13 +9,16 @@ import androidx.lifecycle.ViewModel
 
 class FlightSelectionViewModel : ViewModel() {
     var enabledSelectButton = MutableLiveData(false)
+    var noFlightAvailable = MutableLiveData(false)
 
     private lateinit var statusChanged: List<MutableLiveData<Boolean>>
     var selectedPosition = -1
-    private set
+        private set
 
     fun setNumFlights(numFlights: Int) {
-        statusChanged = List(numFlights) { MutableLiveData(false) }
+        if (numFlights > 0)
+            statusChanged = List(numFlights) { MutableLiveData(false) }
+        noFlightAvailable.value = numFlights == 0
     }
 
     fun selectFlight(position: Int) {
