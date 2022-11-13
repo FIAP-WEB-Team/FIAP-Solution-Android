@@ -14,8 +14,6 @@ import com.fiapon.androidsolution.ui.auth.RequestState
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.time.LocalDate
-import java.time.format.DateTimeFormatter
 
 
 class PassengerViewModelFactory(private val someString: String) :
@@ -65,10 +63,6 @@ class PassengerViewModel(private val token: String) : ViewModel() {
         return nationality.value?.isNotEmpty() ?: false
     }
 
-    private fun stringToDate(dateStr: String): LocalDate {
-        return LocalDate.parse(dateStr, DateTimeFormatter.ofPattern("dd/MM/yyyy"))
-    }
-
     fun createTicket(flight: Flight) {
         if (!isCheckingData) {
             isCheckingData = true
@@ -77,7 +71,7 @@ class PassengerViewModel(private val token: String) : ViewModel() {
 
             val passenger = getPassengerData()
 
-            val longhand = retrofitPassengerService().setPassenger(passenger, token)
+            val longhand = retrofitPassengerService().setPassenger(passenger, "Bearer $token")
 
             longhand.enqueue(object : Callback<String> {
                 override fun onResponse(call: Call<String>, response: Response<String>) {
@@ -113,7 +107,7 @@ class PassengerViewModel(private val token: String) : ViewModel() {
     private fun getPassengerData(): Passenger {
         return Passenger(
             1,
-            stringToDate(birthDate.value!!),
+            birthDate.value!!,
             firstName.value!!,
             lastName.value!!,
             gender.value!!,

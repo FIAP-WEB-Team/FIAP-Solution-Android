@@ -22,8 +22,6 @@ import kotlinx.android.synthetic.main.activity_passenger_data.*
 import kotlinx.android.synthetic.main.footer_bar.*
 import kotlinx.android.synthetic.main.footer_bar.view.*
 import kotlinx.android.synthetic.main.main_edit_text.view.*
-import java.time.LocalDate
-import java.time.format.DateTimeFormatter
 
 class PassengerDataActivity : AppCompatActivity() {
 
@@ -149,7 +147,7 @@ class PassengerDataActivity : AppCompatActivity() {
             passengerInfoToView(
                 Passenger(
                     -1,
-                    LocalDate.of(1995, 3, 11),
+                    "11/03/1995",
                     "Giba",
                     "dos Santos",
                     "Masculino",
@@ -160,23 +158,20 @@ class PassengerDataActivity : AppCompatActivity() {
             passengerInfoToView(
                 Passenger(
                     -1,
-                    LocalDate.now(),
+                    "",
                     "",
                     "",
                     "",
                     ""
-                ), true
+                )
             )
         }
     }
 
-    private fun passengerInfoToView(passenger: Passenger, emptyDate: Boolean = false) {
-        val dateStr =
-            if (emptyDate) "" else passenger.birthDate.format(DateTimeFormatter.ofPattern("ddMMyyyy"))
-
+    private fun passengerInfoToView(passenger: Passenger) {
         firstNameEditText.editText.setText(passenger.firstName)
         lastNameEditText.editText.setText(passenger.lastName)
-        birthDateEditText.editText.setText(dateStr)
+        birthDateEditText.editText.setText(passenger.birthDate)
         genderEditText.editText.setText(passenger.gender)
         nationalityEditText.editText.setText(passenger.nationality)
     }
