@@ -13,7 +13,7 @@
         android:theme="@style/Theme.AndroidSolution"
         >
         <activity
-            android:name=".ui.payment.PaymentActivity"
+            android:name=".ui.booking.BookingCompletedActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

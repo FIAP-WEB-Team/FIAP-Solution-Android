@@ -10,10 +10,11 @@ import com.fiapon.androidsolution.R
 import com.fiapon.androidsolution.model.flights.Flight
 import com.fiapon.androidsolution.model.flights.FlightSource
 
-class FlightSelectionAdapter(private val viewModel: FlightSelectionViewModel) :
+class FlightSelectionAdapter(
+    private val viewModel: FlightSelectionViewModel,
+    private var flightData: MutableList<Flight>
+) :
     RecyclerView.Adapter<FlightViewHolder>() {
-
-    private val dataSource = FlightSource()
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): FlightViewHolder {
         val view = LayoutInflater.from(viewGroup.context)
@@ -24,14 +25,14 @@ class FlightSelectionAdapter(private val viewModel: FlightSelectionViewModel) :
     }
 
     override fun onBindViewHolder(holder: FlightViewHolder, position: Int) {
-        holder.bind(position, dataSource.flightDummyData[position])
+        holder.bind(position, flightData[position])
     }
 
     override fun getItemCount(): Int {
-        return dataSource.flightDummyData.size
+        return flightData.size
     }
 
     fun getDataAt(position: Int): Flight {
-        return dataSource.flightDummyData[position]
+        return flightData[position]
     }
 }

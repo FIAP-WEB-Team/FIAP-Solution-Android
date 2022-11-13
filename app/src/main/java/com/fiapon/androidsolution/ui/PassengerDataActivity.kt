@@ -16,7 +16,7 @@ import com.fiapon.androidsolution.R
 import com.fiapon.androidsolution.model.flights.Flight
 import com.fiapon.androidsolution.model.passengers.Passenger
 import com.fiapon.androidsolution.ui.auth.RequestState
-import com.fiapon.androidsolution.ui.payment.PaymentActivity
+import com.fiapon.androidsolution.ui.booking.BookingCompletedActivity
 import com.fiapon.androidsolution.ui.utilities.DateInputMask
 import kotlinx.android.synthetic.main.activity_passenger_data.*
 import kotlinx.android.synthetic.main.footer_bar.*
@@ -133,7 +133,7 @@ class PassengerDataActivity : AppCompatActivity() {
                 }
                 is RequestState.Success -> {
                     loadingHandler(false)
-                    val intent = Intent(this, PaymentActivity::class.java)
+                    val intent = Intent(this, BookingCompletedActivity::class.java)
                     startActivity(intent)
                 }
             }

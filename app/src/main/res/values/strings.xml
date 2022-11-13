@@ -43,4 +43,5 @@
     <string name="same_info_as_traveler">Utilizar mesmos dados do viajante</string>
     <string name="payment_type_selection">Formas de pagamento</string>
     <string name="lock_content_description">Cadeadro laranja</string>
+    <string name="loading_flights">Carregando voos...</string>
 </resources>

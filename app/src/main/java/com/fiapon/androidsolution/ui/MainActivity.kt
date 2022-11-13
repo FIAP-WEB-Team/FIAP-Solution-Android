@@ -6,7 +6,6 @@ package com.fiapon.androidsolution.ui
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Parcelable
 import android.widget.Toast
 import com.fiapon.androidsolution.R
 import com.fiapon.androidsolution.ui.auth.RequestState
