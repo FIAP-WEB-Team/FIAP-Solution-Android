@@ -7,7 +7,7 @@ import java.time.LocalDate
 
 data class Passenger(
     val id: Int,
-    val birthDate: LocalDate,
+    val birthDate: String,
     val firstName: String,
     val lastName: String,
     val gender: String,

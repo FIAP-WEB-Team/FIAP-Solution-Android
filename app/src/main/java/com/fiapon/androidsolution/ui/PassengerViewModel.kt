@@ -5,19 +5,27 @@ package com.fiapon.androidsolution.ui
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.ViewModelProvider
+import com.fiapon.androidsolution.data_context.retrofitPassengerService
 import com.fiapon.androidsolution.model.flights.Flight
 import com.fiapon.androidsolution.model.passengers.Passenger
 import com.fiapon.androidsolution.model.tickets.Ticket
 import com.fiapon.androidsolution.ui.auth.RequestState
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 
-class PassengerViewModel : ViewModel() {
-    var enabledFooterButton = MutableLiveData<Boolean>(false)
+
+class PassengerViewModelFactory(private val someString: String) :
+    ViewModelProvider.NewInstanceFactory() {
+    override fun <T : ViewModel> create(modelClass: Class<T>): T =
+        PassengerViewModel(someString) as T
+}
+
+class PassengerViewModel(private val token: String) : ViewModel() {
+    var enabledFooterButton = MutableLiveData(false)
 
     var firstName = MutableLiveData("")
     var lastName = MutableLiveData("")
@@ -26,12 +34,15 @@ class PassengerViewModel : ViewModel() {
     var nationality = MutableLiveData("")
 
     var checkDataState = MutableLiveData<RequestState<Ticket>>()
+
     private var isCheckingData = false
+    private var isPassengerDataValid = false
 
 
     fun validateFields() {
-        enabledFooterButton.value =
+        isPassengerDataValid =
             validFirstName() && validLastName() && validBirthDate() && validGender() && validNationality()
+        updateFooterEnabledStatus()
     }
 
     private fun validFirstName(): Boolean {
@@ -55,44 +66,48 @@ class PassengerViewModel : ViewModel() {
     }
 
     private fun stringToDate(dateStr: String): LocalDate {
-        return LocalDate.now()
-    }
-
-    private fun <R> CoroutineScope.executeAsyncTask(
-        onPreExecute: () -> Unit,
-        doInBackground: () -> R,
-        onPostExecute: (R) -> Unit
-    ) = launch {
-        onPreExecute()
-        val result =
-            withContext(Dispatchers.IO) { // runs in background thread without blocking the Main Thread
-                doInBackground()
-            }
-        onPostExecute(result)
+        return LocalDate.parse(dateStr, DateTimeFormatter.ofPattern("dd/MM/yyyy"))
     }
 
     fun createTicket(flight: Flight) {
         if (!isCheckingData) {
             isCheckingData = true
+            updateFooterEnabledStatus()
             checkDataState.value = RequestState.Loading
 
             val passenger = getPassengerData()
 
-            viewModelScope.executeAsyncTask(
-                onPreExecute = {},
-                doInBackground = {
-                    val ticket = Ticket(passenger.id, flight.number)
+            val longhand = retrofitPassengerService().setPassenger(passenger, token)
 
-                    Thread.sleep(5000)
+            longhand.enqueue(object : Callback<String> {
+                override fun onResponse(call: Call<String>, response: Response<String>) {
+                    if (response.body() != null) {
+                        persistTicket(Ticket(passenger.id, flight.number))
+                    } else {
+                        checkDataState.value =
+                            RequestState.Error(Error("Null body message received from token request"))
+                        isCheckingData = false
+                        updateFooterEnabledStatus()
+                    }
+                }
 
-                    ticket
-                },
-                onPostExecute = {
+                override fun onFailure(call: Call<String>, t: Throwable) {
+                    checkDataState.value = RequestState.Error(t)
                     isCheckingData = false
-                    checkDataState.value = RequestState.Success(it)
-                },
-            )
+                    updateFooterEnabledStatus()
+                }
+
+            })
         }
+    }
+
+    private fun updateFooterEnabledStatus(){
+        enabledFooterButton.value = isPassengerDataValid && !isCheckingData
+    }
+
+    private fun persistTicket(ticket: Ticket) {
+        isCheckingData = false
+        updateFooterEnabledStatus()
     }
 
     private fun getPassengerData(): Passenger {

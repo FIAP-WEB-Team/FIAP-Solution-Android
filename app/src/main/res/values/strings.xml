@@ -35,6 +35,12 @@
     <string name="passenger_default_name">Giba</string>
     <string name="same_person_question">, você é o passageiro dessa viagem?</string>
     <string name="no_flight_found">Nenhum voo encontrado para o dia selecionado</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!--Payment data texts-->
+    <string name="payment_type_header">Escolha a forma do seu pagamento</string>
+    <string name="payer_data">Dados do responsável pelo pagamento</string>
+    <string name="all_fields_required">Todos os campos são obrigatórios</string>
+    <string name="same_info_as_traveler">Utilizar mesmos dados do viajante</string>
+    <string name="payment_type_selection">Formas de pagamento</string>
+    <string name="lock_content_description">Cadeadro laranja</string>
 </resources>

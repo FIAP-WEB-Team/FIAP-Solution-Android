@@ -8,11 +8,11 @@ import retrofit2.http.POST
 
 interface FlightService {
     @POST("setFlight")
-    fun setPassenger(
+    fun setFlights(
         @Body flight: Flight,
         @Header("Authorization") authorization: String
     ): Call<String>
 
     @GET("getFlights")
-    fun getPassenger(@Header("Authorization") authorization: String): Call<List<Flight>>
+    fun getFlights(@Header("Authorization") authorization: String): Call<List<Flight>>
 }

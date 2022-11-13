@@ -3,6 +3,7 @@
  */
 package com.fiapon.androidsolution.ui
 
+import android.content.Intent
 import android.os.Bundle
 import android.text.InputFilter
 import android.text.InputType
@@ -15,6 +16,7 @@ import com.fiapon.androidsolution.R
 import com.fiapon.androidsolution.model.flights.Flight
 import com.fiapon.androidsolution.model.passengers.Passenger
 import com.fiapon.androidsolution.ui.auth.RequestState
+import com.fiapon.androidsolution.ui.payment.PaymentActivity
 import com.fiapon.androidsolution.ui.utilities.DateInputMask
 import kotlinx.android.synthetic.main.activity_passenger_data.*
 import kotlinx.android.synthetic.main.footer_bar.*
@@ -27,14 +29,16 @@ class PassengerDataActivity : AppCompatActivity() {
 
     private lateinit var viewModel: PassengerViewModel
     private var selectedFlight: Flight? = null
+    private var token: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_passenger_data)
 
         selectedFlight = intent.extras?.getParcelable("selected_flight", Flight::class.java)
+        token = intent.extras?.getString("api_token")
 
-        viewModel = ViewModelProvider.NewInstanceFactory().create(PassengerViewModel::class.java)
+        viewModel = ViewModelProvider(this, PassengerViewModelFactory(token!!))[PassengerViewModel::class.java]
         footer.footerButton.isEnabled = false
 
         setImportedLayoutsTexts()
@@ -123,7 +127,7 @@ class PassengerDataActivity : AppCompatActivity() {
                     Toast.makeText(
                         this,
                         "Não foi possível reservar a passagem: " + it.throwable.message.toString(),
-                        Toast.LENGTH_SHORT
+                        Toast.LENGTH_LONG
                     ).show()
                 }
                 is RequestState.Loading -> {
@@ -131,8 +135,8 @@ class PassengerDataActivity : AppCompatActivity() {
                 }
                 is RequestState.Success -> {
                     loadingHandler(false)
-                    Toast.makeText(this, "Passagem reservada com sucesso!", Toast.LENGTH_SHORT)
-                        .show()
+                    val intent = Intent(this, PaymentActivity::class.java)
+                    startActivity(intent)
                 }
             }
         }
@@ -180,10 +184,8 @@ class PassengerDataActivity : AppCompatActivity() {
     private fun loadingHandler(isLoading: Boolean) {
         if (isLoading) {
             footer.footerButton.text = getString(R.string.loading_text)
-            footer.footerButton.isEnabled = false
         } else {
             footer.footerButton.text = getString(R.string.goto_payment_text)
-            footer.footerButton.isEnabled = true
         }
     }
 
