@@ -1,7 +1,7 @@
 /**
  * Created by LucasS
  */
-package com.fiapon.androidsolution.ui
+package com.fiapon.androidsolution.ui.passenger
 
 import android.content.Intent
 import android.os.Bundle
@@ -146,7 +146,6 @@ class PassengerDataActivity : AppCompatActivity() {
         if (radio.text == getString(R.string.yes_text)) {
             passengerInfoToView(
                 Passenger(
-                    -1,
                     "11/03/1995",
                     "Giba",
                     "dos Santos",
@@ -157,7 +156,6 @@ class PassengerDataActivity : AppCompatActivity() {
         } else {
             passengerInfoToView(
                 Passenger(
-                    -1,
                     "",
                     "",
                     "",

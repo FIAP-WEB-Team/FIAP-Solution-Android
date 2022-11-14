@@ -7,9 +7,9 @@ import retrofit2.http.Header
 import retrofit2.http.POST
 
 interface TicketService {
-    @POST("settickets")
+    @POST("buyTicket")
     fun setTickets(@Body ticket: Ticket, @Header("Authorization")authorization:String): Call<String>
 
-    @GET("gettickets")
+    @GET("getTicket")
     fun getTickets(@Header("Authorization")authorization:String): Call<List<Ticket>>
 }

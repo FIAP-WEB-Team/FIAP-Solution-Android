@@ -43,5 +43,6 @@
     <string name="same_info_as_traveler">Utilizar mesmos dados do viajante</string>
     <string name="payment_type_selection">Formas de pagamento</string>
     <string name="lock_content_description">Cadeadro laranja</string>
-    <string name="loading_flights">Carregando voos...</string>
+    <string name="loading_flights">Carregando voos…</string>
+    <string name="error_loading_flight">Erro ao procurar por voo</string>
 </resources>

@@ -13,7 +13,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.fiapon.androidsolution.R
 import com.fiapon.androidsolution.model.flights.Flight
-import com.fiapon.androidsolution.ui.PassengerDataActivity
+import com.fiapon.androidsolution.ui.passenger.PassengerDataActivity
 import com.fiapon.androidsolution.ui.auth.BaseAuthFragment
 import com.fiapon.androidsolution.ui.auth.RequestState
 import kotlinx.android.synthetic.main.footer_bar.view.*
@@ -67,6 +67,8 @@ class FlightSelectionFragment : BaseAuthFragment() {
                 if (it == ShowStatus.NO_FLIGHT_AVAILABLE) View.VISIBLE else View.INVISIBLE
             loadingFlights.visibility =
                 if (it == ShowStatus.LOADING) View.VISIBLE else View.INVISIBLE
+            errorLoadingFlights.visibility =
+                if (it == ShowStatus.ERROR) View.VISIBLE else View.INVISIBLE
         }
         viewModel.enabledSelectButton.observe(viewLifecycleOwner) {
             footer.footerButton.isEnabled = it

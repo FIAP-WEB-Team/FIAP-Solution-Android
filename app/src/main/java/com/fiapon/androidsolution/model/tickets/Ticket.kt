@@ -4,6 +4,6 @@
 package com.fiapon.androidsolution.model.tickets
 
 data class Ticket(
-    val passengerId: Int,
-    val flightNumber: Int
+    val passengerID: String,
+    val flightID: Int
 )

@@ -18,7 +18,7 @@ class TicketSource {
                 if (response.body() != null) {
                     callback(RequestState.Success(response.body().toString()))
                 } else {
-                    callback(RequestState.Error(Error("Null body message received from token request")))
+                    callback(RequestState.Error(Error(response.message().toString())))
                 }
             }
 

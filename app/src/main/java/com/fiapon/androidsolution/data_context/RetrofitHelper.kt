@@ -7,15 +7,18 @@ import com.fiapon.androidsolution.model.tickets.TicketService
 import com.google.gson.GsonBuilder
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.converter.scalars.ScalarsConverterFactory
 
 
 const val BASE_URL = "https://fiapgolapi.azurewebsites.net/"
 
-fun getRetrofitFactory(): Retrofit = Retrofit.Builder().baseUrl(BASE_URL).addConverterFactory(
-    GsonConverterFactory.create(
-        GsonBuilder().setLenient().create()
-    )
-).build()
+fun getRetrofitFactory(): Retrofit =
+    Retrofit.Builder().baseUrl(BASE_URL).addConverterFactory(ScalarsConverterFactory.create())
+        .addConverterFactory(
+            GsonConverterFactory.create(
+                GsonBuilder().setLenient().create()
+            )
+        ).build()
 
 fun retrofitFlightService(): FlightService = getRetrofitFactory().create(FlightService::class.java)
 fun retrofitPassengerService(): PassengerService =

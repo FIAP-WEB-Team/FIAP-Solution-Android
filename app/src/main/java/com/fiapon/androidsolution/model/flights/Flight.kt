@@ -8,7 +8,7 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class Flight(
-    val number: Int,
+    val flightNumber: Int,
     val departure: String,
     val departureDate: String,
     val arrival: String,

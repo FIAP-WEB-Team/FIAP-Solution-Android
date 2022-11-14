@@ -12,6 +12,7 @@ import androidx.lifecycle.findViewTreeLifecycleOwner
 import androidx.recyclerview.widget.RecyclerView
 import com.fiapon.androidsolution.R
 import com.fiapon.androidsolution.model.flights.Flight
+import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
 class FlightViewHolder(private val view: View, viewModel: FlightSelectionViewModel) : RecyclerView.ViewHolder(view) {
@@ -45,14 +46,18 @@ class FlightViewHolder(private val view: View, viewModel: FlightSelectionViewMod
             flightItemLayout.setBackgroundColor(ContextCompat.getColor(view.context, R.color.white))
     }
 
+    private fun getTimeFromDate(date: String): String{
+        return LocalDateTime.parse(date, DateTimeFormatter.ISO_DATE_TIME).format(dateFormatter)
+    }
+
     @SuppressLint("SetTextI18n")
     fun bind(position: Int, data: Flight) {
         this.position = position
 
         flightDepartureTextView.text =
-            "${data.departure} - ${data.departureDate.format(dateFormatter)}"
+            "${data.departure} - ${getTimeFromDate(data.departureDate)}"
         flightArrivalTextView.text =
-            "${data.arrival} - ${data.arrivalDate.format(dateFormatter)}"
+            "${data.arrival} - ${getTimeFromDate(data.arrivalDate)}"
         flightPrice.text = "R$${String.format("%.2f", data.price).replace(".", ",")}"
     }
 }

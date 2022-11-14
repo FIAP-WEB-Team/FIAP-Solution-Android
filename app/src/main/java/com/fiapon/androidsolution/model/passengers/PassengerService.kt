@@ -7,13 +7,13 @@ import retrofit2.http.Header
 import retrofit2.http.POST
 
 interface PassengerService {
-    @POST("setPassenger")
+    @POST("setpassengers")
     fun setPassenger(
         @Body passenger: Passenger,
         @Header("Authorization") authorization: String
     ): Call<String>
 
-    @GET("getPassenger")
+    @GET("getpassengers")
     fun getPassenger(@Header("Authorization") authorization: String): Call<List<Passenger>>
 
 }
