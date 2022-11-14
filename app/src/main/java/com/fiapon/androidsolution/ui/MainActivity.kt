@@ -7,6 +7,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import com.fiapon.androidsolution.FlightDataActivity
 import com.fiapon.androidsolution.R
 import com.fiapon.androidsolution.ui.auth.RequestState
 import com.fiapon.androidsolution.ui.flight_selection.FlightSelectionActivity
@@ -36,6 +37,10 @@ class MainActivity : AppCompatActivity() {
             is RequestState.Success -> {
                 btnFlightSelection.isEnabled = true
                 token = state.data
+
+                val intent = Intent(this, FlightDataActivity::class.java)
+                intent.putExtra("api_token", token)
+                startActivity(intent)
             }
         }
     }

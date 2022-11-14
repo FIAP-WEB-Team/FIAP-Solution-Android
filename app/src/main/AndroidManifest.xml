@@ -47,6 +47,14 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
+        <activity
+            android:name=".FlightDataActivity"
+            android:exported="false"
+            android:parentActivityName=".ui.MainActivity">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
 
         <meta-data
             android:name="preloaded_fonts"

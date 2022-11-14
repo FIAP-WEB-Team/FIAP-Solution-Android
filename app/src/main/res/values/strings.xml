@@ -14,6 +14,7 @@
     <string name="price_fanfare">A partir de</string>
     <string name="flight_price_example">R$ 612,20</string>
     <string name="select_flight_text">Escolher viagem</string>
+    <string name="flight_text_header">Encontre os melhores voos com as melhores ofertas</string>
 
     <!--Passenger data texts-->
     <string name="passenger_text_header">Preencha os dados do passageiro</string>
@@ -45,4 +46,27 @@
     <string name="lock_content_description">Cadeadro laranja</string>
     <string name="loading_flights">Carregando voos…</string>
     <string name="error_loading_flight">Erro ao procurar por voo</string>
+
+    <!--Flight data texts-->
+    <string name="txt_text_view_destiny_date">DATA DA VIAGEM DE VOLTA</string>
+    <string name="txt_edit_text_date">Quando?</string>
+    <string name="txt_flight_icon">Icon</string>
+    <string name="txt_text_view_origin_date">DATA DA VIAGEM DE IDA</string>
+    <string name="txt_text_view_trecho">TRECHO</string>
+    <string name="txt_text_view_origin">SAINDO DE</string>
+    <string name="txt_text_view_destiny">INDO PARA</string>
+    <string name="txt_text_view_flight_passengers">PASSAGEIROS</string>
+    <string name="txt_edit_text_passenger">1 adulto(s)</string>
+
+    <!--Flight data modal texts-->
+    <string name="txt_client_text_view_modal">Cliente</string>
+    <string name="txt_adult_text_view_modal">Adultos</string>
+    <string name="txt_one">1</string>
+    <string name="txt_zero">0</string>
+    <string name="txt_adult_text_view_modal_sub">Mais de 12 anos</string>
+    <string name="txt_child_text_view_modal">Crianças</string>
+    <string name="txt_child_text_view_modal_sub">2 a 11 anos</string>
+    <string name="txt_baby_text_view_modal">Bebês</string>
+    <string name="txt_baby_text_view_modal_sub">0 a 23 meses</string>
+    <string name="txt_btn_continue">Continuar</string>
 </resources>

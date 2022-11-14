@@ -13,9 +13,9 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.fiapon.androidsolution.R
 import com.fiapon.androidsolution.model.flights.Flight
-import com.fiapon.androidsolution.ui.passenger.PassengerDataActivity
 import com.fiapon.androidsolution.ui.auth.BaseAuthFragment
 import com.fiapon.androidsolution.ui.auth.RequestState
+import com.fiapon.androidsolution.ui.passenger.PassengerDataActivity
 import kotlinx.android.synthetic.main.footer_bar.view.*
 import kotlinx.android.synthetic.main.fragment_flight_selection.*
 
@@ -26,6 +26,10 @@ class FlightSelectionFragment : BaseAuthFragment() {
     private lateinit var viewModel: FlightSelectionViewModel
     private lateinit var adapter: FlightSelectionAdapter
     private var token: String? = null
+    private var date_flight: String? = null
+    private var day_of_week: String? = null
+    private var flight_arrival: String? = null
+    private var flight_departure: String? = null
     private var flightData: MutableList<Flight> = mutableListOf<Flight>()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -34,9 +38,15 @@ class FlightSelectionFragment : BaseAuthFragment() {
         viewModel =
             ViewModelProvider.NewInstanceFactory().create(FlightSelectionViewModel::class.java)
         token = requireActivity().intent?.extras?.getString("api_token")
+        date_flight = requireActivity().intent?.extras?.getString("date_flight")
+        day_of_week = requireActivity().intent?.extras?.getString("day_of_week")
+        flight_arrival = requireActivity().intent?.extras?.getString("flight_arrival")
+        flight_departure = requireActivity().intent?.extras?.getString("flight_departure")
         adapter = FlightSelectionAdapter(viewModel, flightData)
 
         viewModel.loadFlights(token!!)
+
+        dateInfo.text = day_of_week + ", " + date_flight + " \n - A partir de 643,00"
 
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(context)
@@ -62,6 +72,7 @@ class FlightSelectionFragment : BaseAuthFragment() {
 
     @SuppressLint("NotifyDataSetChanged")
     private fun createObservers() {
+
         viewModel.showStatus.observe(viewLifecycleOwner) {
             noFlightAvailable.visibility =
                 if (it == ShowStatus.NO_FLIGHT_AVAILABLE) View.VISIBLE else View.INVISIBLE

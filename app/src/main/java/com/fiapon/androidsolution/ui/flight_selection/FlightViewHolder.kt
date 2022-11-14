@@ -54,10 +54,8 @@ class FlightViewHolder(private val view: View, viewModel: FlightSelectionViewMod
     fun bind(position: Int, data: Flight) {
         this.position = position
 
-        flightDepartureTextView.text =
-            "${data.departure} - ${getTimeFromDate(data.departureDate)}"
-        flightArrivalTextView.text =
-            "${data.arrival} - ${getTimeFromDate(data.arrivalDate)}"
+        flightDepartureTextView.text = "${data.departure} - ${getTimeFromDate(data.departureDate)}"
+        flightArrivalTextView.text = "${data.arrival} - ${getTimeFromDate(data.arrivalDate)}"
         flightPrice.text = "R$${String.format("%.2f", data.price).replace(".", ",")}"
     }
 }

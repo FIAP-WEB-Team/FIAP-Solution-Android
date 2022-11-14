@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="160dp"
+    android:id="@+id/constraint_layout"
+    android:focusableInTouchMode="true"
+    android:focusable="true">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/materialCardViewDestination"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:strokeColor="@color/gray_light"
+        app:strokeWidth="2dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/containerOrigin"
+            android:layout_width="match_parent"
+            android:layout_height="80dp">
+
+            <TextView
+                android:id="@+id/textViewOrigin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginStart="30dp"
+                android:text="@string/txt_text_view_origin"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Spinner
+                android:id="@+id/flightSpinnerOrigin"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="76dp"
+                android:layout_marginBottom="10dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <ImageView
+                android:id="@+id/twoSidedIconAbove"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_marginBottom="-15dp"
+                android:scaleType="fitXY"
+                android:contentDescription="@string/txt_flight_icon"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginEnd="16dp"
+                app:srcCompat="@drawable/two_sided_arrow_icon" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/containerDestination"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_marginTop="80dp">
+
+            <TextView
+                android:id="@+id/textViewDestination"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="5dp"
+                android:text="@string/txt_text_view_destiny"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Spinner
+                android:id="@+id/flightSpinnerDestination"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="76dp"
+                android:layout_marginBottom="10dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <ImageView
+                android:id="@+id/twoSidedIconBelow"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_marginTop="-15dp"
+                android:scaleType="fitXY"
+                android:contentDescription="@string/txt_flight_icon"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginEnd="16dp"
+                app:srcCompat="@drawable/two_sided_arrow_icon" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- ImageView
+        android:id="@+id/twoSidedIcon"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:scaleType="fitXY"
+        android:translationZ="190dp"
+        app:srcCompat="@drawable/two_sided_arrow_icon"
+        tools:layout_editor_absoluteX="375dp"
+        tools:layout_editor_absoluteY="65dp" / -->
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

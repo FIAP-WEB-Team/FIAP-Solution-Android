@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="20dp"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:background="@drawable/bg_custom_modal">
+
+    <TextView
+        android:id="@+id/clientTextViewModal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:text="@string/txt_client_text_view_modal"
+        android:textColor="@color/white"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="12dp"/>
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:stretchColumns="1">
+
+        <TableRow
+            android:paddingBottom="0dp"
+            android:layout_marginBottom="0dp">
+            <TextView
+                android:id="@+id/adultTextViewModal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/txt_adult_text_view_modal"
+                android:textColor="@color/white"
+                android:textSize="28sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:inputType="text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="invisible"
+                android:hint="@string/txt_flight_icon"
+                android:autofillHints=""
+                android:background="@color/white"/>
+
+            <ImageView
+                android:id="@+id/remove_adult"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_marginTop="2dp"
+                android:scaleType="fitXY"
+                android:contentDescription="@string/txt_flight_icon"
+                android:src="@drawable/minus_icon"/>
+
+            <TextView
+                android:id="@+id/quantity_adult"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/txt_one"
+                android:textColor="@color/white"
+                android:textSize="28sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="12dp"
+                android:layout_gravity="start"/>
+
+            <ImageView
+                android:id="@+id/add_adult"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_marginTop="2dp"
+                android:scaleType="fitXY"
+                android:contentDescription="@string/txt_flight_icon"
+                android:src="@drawable/plus_icon"/>
+        </TableRow>
+
+        <TableRow
+            android:layout_marginTop="-16dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/txt_adult_text_view_modal_sub"
+                android:textColor="@color/gray_light"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+        </TableRow>
+
+        <TableRow
+            android:layout_marginTop="10dp"
+            android:paddingBottom="0dp"
+            android:layout_marginBottom="0dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/txt_child_text_view_modal"
+                android:textColor="@color/white"
+                android:textSize="28sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:inputType="text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints=""
+                android:visibility="invisible"
+                android:background="@color/white"/>
+
+            <ImageView
+                android:id="@+id/remove_child"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_marginTop="2dp"
+                android:visibility="invisible"
+                android:scaleType="fitXY"
+                android:contentDescription="@string/txt_flight_icon"
+                android:src="@drawable/minus_icon"/>
+
+            <TextView
+                android:id="@+id/quantity_child"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/txt_zero"
+                android:textColor="@color/white"
+                android:textSize="28sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="12dp"
+                android:layout_gravity="start"/>
+
+            <ImageView
+                android:id="@+id/add_child"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_marginTop="2dp"
+                android:scaleType="fitXY"
+                android:contentDescription="@string/txt_flight_icon"
+                android:src="@drawable/plus_icon"/>
+        </TableRow>
+
+        <TableRow
+            android:layout_marginTop="-16dp"
+            android:paddingBottom="0dp"
+            android:layout_marginBottom="0dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/txt_child_text_view_modal_sub"
+                android:textColor="@color/gray_light"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+        </TableRow>
+
+        <TableRow
+            android:layout_marginTop="10dp"
+            android:paddingBottom="0dp"
+            android:layout_marginBottom="0dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/txt_baby_text_view_modal"
+                android:textColor="@color/white"
+                android:textSize="28sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:inputType="text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="invisible"
+                android:autofillHints=""
+                android:background="@color/white"/>
+
+            <ImageView
+                android:id="@+id/remove_baby"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_marginTop="2dp"
+                android:scaleType="fitXY"
+                android:contentDescription="@string/txt_flight_icon"
+                android:visibility="invisible"
+                android:src="@drawable/minus_icon"/>
+
+            <TextView
+                android:id="@+id/quantity_baby"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/txt_zero"
+                android:textColor="@color/white"
+                android:textSize="28sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="12dp"
+                android:layout_gravity="start"/>
+
+            <ImageView
+                android:id="@+id/add_baby"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_marginTop="2dp"
+                android:scaleType="fitXY"
+                android:contentDescription="@string/txt_flight_icon"
+                android:src="@drawable/plus_icon"/>
+        </TableRow>
+
+        <TableRow
+            android:layout_marginTop="-16dp"
+            android:paddingBottom="0dp"
+            android:layout_marginBottom="0dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/txt_baby_text_view_modal_sub"
+                android:textColor="@color/gray_light"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+        </TableRow>
+
+    </TableLayout>
+
+    <Button
+        android:id="@+id/btnConfirmSeats"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:backgroundTint="@color/orange_strong"
+        android:text="@string/txt_btn_continue"
+        android:textAllCaps="false" />
+
+</LinearLayout>
