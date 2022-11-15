@@ -68,7 +68,7 @@
     <string name="txt_btn_continue">Continuar</string>
 
     <!--Booking texts-->
-    <string name="successful_booking">Reserva efetuada com sucesso</string>
+    <string name="successful_booking">Reserva efetuada com\nsucesso</string>
     <string name="go_back">Voltar ao início</string>
     <string name="login_header">Faça login para continuar</string>
 

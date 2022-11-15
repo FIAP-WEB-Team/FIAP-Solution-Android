@@ -6,7 +6,6 @@ package com.fiapon.androidsolution.ui.passenger
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.fiapon.androidsolution.model.flights.Flight
 import com.fiapon.androidsolution.model.passengers.Passenger
 import com.fiapon.androidsolution.model.passengers.PassengerSource
 import com.fiapon.androidsolution.model.tickets.Ticket
@@ -61,7 +60,7 @@ class PassengerViewModel(private val token: String) : ViewModel() {
         return nationality.value?.isNotEmpty() ?: false
     }
 
-    fun createTicket(flight: Flight) {
+    fun createTicket(flightID: Int) {
         if (!isCheckingData) {
             isCheckingData = true
             updateFooterEnabledStatus()
@@ -72,7 +71,7 @@ class PassengerViewModel(private val token: String) : ViewModel() {
             PassengerSource().createPassenger(passenger, token) {
                 when (it) {
                     is RequestState.Success -> {
-                        persistTicket(Ticket(it.data, flight.flightNumber))
+                        persistTicket(Ticket(it.data, flightID))
                     }
                     else -> {
                         checkDataState.value = it

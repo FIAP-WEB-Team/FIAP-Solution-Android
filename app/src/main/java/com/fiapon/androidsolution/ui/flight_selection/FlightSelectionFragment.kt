@@ -6,7 +6,6 @@ package com.fiapon.androidsolution.ui.flight_selection
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
-import android.os.Parcelable
 import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
@@ -64,7 +63,7 @@ class FlightSelectionFragment : BaseAuthFragment() {
             val position = viewModel.selectedPosition
             if (position >= 0) {
                 val intent = Intent(context, PassengerDataActivity::class.java)
-                intent.putExtra("selected_flight", adapter.getDataAt(position) as Parcelable)
+                intent.putExtra("selected_flight", adapter.getDataAt(position).flightNumber)
                 intent.putExtra("api_token", token)
                 startActivity(intent)
             }

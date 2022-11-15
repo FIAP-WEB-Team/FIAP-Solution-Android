@@ -13,7 +13,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.ViewModelProvider
 import com.fiapon.androidsolution.R
-import com.fiapon.androidsolution.model.flights.Flight
 import com.fiapon.androidsolution.model.passengers.Passenger
 import com.fiapon.androidsolution.ui.auth.RequestState
 import com.fiapon.androidsolution.ui.booking.BookingCompletedActivity
@@ -26,14 +25,14 @@ import kotlinx.android.synthetic.main.main_edit_text.view.*
 class PassengerDataActivity : AppCompatActivity() {
 
     private lateinit var viewModel: PassengerViewModel
-    private var selectedFlight: Flight? = null
+    private var selectedFlight: Int? = null
     private var token: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_passenger_data)
 
-        selectedFlight = intent.extras?.getParcelable("selected_flight", Flight::class.java)
+        selectedFlight = intent.extras?.getInt("selected_flight")
         token = intent.extras?.getString("api_token")
 
         viewModel = ViewModelProvider(this, PassengerViewModelFactory(token!!))[PassengerViewModel::class.java]

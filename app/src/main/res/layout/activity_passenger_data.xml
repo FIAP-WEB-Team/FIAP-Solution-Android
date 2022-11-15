@@ -52,7 +52,7 @@
             android:gravity="bottom"
             android:text="@string/same_person_question"
             android:textColor="@android:color/darker_gray"
-            android:textSize="20sp"
+            android:textSize="18sp"
             app:layout_constraintStart_toEndOf="@+id/passengerNameTextView"
             app:layout_constraintTop_toBottomOf="@+id/flightSelectionTextView" />
 
