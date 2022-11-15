@@ -37,12 +37,7 @@
     <string name="same_person_question">, você é o passageiro dessa viagem?</string>
     <string name="no_flight_found">Nenhum voo encontrado para o dia selecionado</string>
 
-    <!--Payment data texts-->
-    <string name="payment_type_header">Escolha a forma do seu pagamento</string>
-    <string name="payer_data">Dados do responsável pelo pagamento</string>
-    <string name="all_fields_required">Todos os campos são obrigatórios</string>
-    <string name="same_info_as_traveler">Utilizar mesmos dados do viajante</string>
-    <string name="payment_type_selection">Formas de pagamento</string>
+    <!--Main data texts-->
     <string name="lock_content_description">Cadeadro laranja</string>
     <string name="loading_flights">Carregando voos…</string>
     <string name="error_loading_flight">Erro ao procurar por voo</string>
@@ -57,6 +52,7 @@
     <string name="txt_text_view_destiny">INDO PARA</string>
     <string name="txt_text_view_flight_passengers">PASSAGEIROS</string>
     <string name="txt_edit_text_passenger">1 adulto(s)</string>
+    <string name="search_flight">Pesquisar voos</string>
 
     <!--Flight data modal texts-->
     <string name="txt_client_text_view_modal">Cliente</string>
@@ -69,4 +65,9 @@
     <string name="txt_baby_text_view_modal">Bebês</string>
     <string name="txt_baby_text_view_modal_sub">0 a 23 meses</string>
     <string name="txt_btn_continue">Continuar</string>
+
+    <!--Booking texts-->
+    <string name="successful_booking">Reserva efetuada com sucesso</string>
+    <string name="go_back">Voltar ao início</string>
+    <string name="login_header">Faça login para continuar</string>
 </resources>

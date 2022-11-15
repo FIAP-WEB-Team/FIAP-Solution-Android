@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FlightDataActivity"
+    tools:context=".ui.flight.FlightDataActivity"
+    android:fillViewport="true"
     android:id="@+id/mainFlightDataActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -39,7 +40,7 @@
             android:layout_width="match_parent"
             android:layout_height="80dp"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="32dp"
             android:layout_marginEnd="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -87,19 +88,21 @@
             android:layout_height="80dp"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
+            android:layout_marginBottom="64dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/dateDestiny" />
+            app:layout_constraintTop_toBottomOf="@+id/dateDestiny"
+            app:layout_constraintBottom_toTopOf="@+id/btnFooter"
+            />
 
         <include
-            android:id="@+id/btnFooterFlight"
+            android:id="@+id/btnFooter"
             layout="@layout/footer_bar"
             android:layout_width="match_parent"
             android:layout_height="80dp"
-            android:layout_marginTop="40dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/passengersFlight" />
+            app:layout_constraintBottom_toBottomOf="parent" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -7,7 +7,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-import com.fiapon.androidsolution.FlightDataActivity
+import com.fiapon.androidsolution.ui.flight.FlightDataActivity
 import com.fiapon.androidsolution.R
 import com.fiapon.androidsolution.ui.auth.RequestState
 import com.fiapon.androidsolution.ui.flight_selection.FlightSelectionActivity

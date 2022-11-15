@@ -28,8 +28,7 @@
         </activity>
         <activity
             android:name=".ui.passenger.PassengerDataActivity"
-            android:exported="false"
-            android:parentActivityName=".ui.MainActivity">
+            android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -48,7 +47,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".FlightDataActivity"
+            android:name=".ui.flight.FlightDataActivity"
             android:exported="false"
             android:parentActivityName=".ui.MainActivity">
             <meta-data

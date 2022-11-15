@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.booking.BookingCompletedActivity">
+
+    <include
+        android:id="@+id/actionBar"
+        layout="@layout/action_bar" />
+
+    <LinearLayout
+        android:layout_width="424dp"
+        android:layout_height="139dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/btnFooter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/actionBar">
+
+        <TextView
+            android:id="@+id/successfulBookingTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="24dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:text="@string/successful_booking"
+            android:textColor="@color/black"
+            android:textSize="25sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/actionBar" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/returnToBeginningTextView"
+            android:layout_width="242dp"
+            android:layout_height="0dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="24dp"
+            android:layout_weight="1"
+            android:background="@color/beige_strong"
+            android:text="@string/go_back"
+            android:textAllCaps="false"
+            android:textColor="@color/black"
+            android:textSize="25sp"
+            app:layout_constraintBottom_toTopOf="@+id/btnFooter"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/successfulBookingTextView" />
+    </LinearLayout>
+
+    <View
+        android:id="@+id/btnFooter"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="@color/beige_light"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

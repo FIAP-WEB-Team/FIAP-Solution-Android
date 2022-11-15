@@ -40,7 +40,8 @@ android {
         main {
             res {
                 srcDirs 'src\\main\\res', 'src\\main\\res\\layouts\\bars', 'src\\main\\res\\layouts\\components',
-                        'src\\main\\res\\layouts\\flight_selection', 'src\\main\\res\\layouts\\payment'
+                        'src\\main\\res\\layouts\\flight_selection', 'src\\main\\res\\layouts\\booking',
+                        'src\\main\\res\\layouts\\flight_search'
             }
         }
     }

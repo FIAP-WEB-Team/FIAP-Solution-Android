@@ -1,5 +1,6 @@
-package com.fiapon.androidsolution
+package com.fiapon.androidsolution.ui.flight
 
+import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.content.Intent
 import android.os.Bundle
@@ -7,6 +8,7 @@ import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import com.fiapon.androidsolution.R
 import com.fiapon.androidsolution.databinding.ModalSeatsPassengersBinding
 import com.fiapon.androidsolution.ui.FlightViewModel
 import com.fiapon.androidsolution.ui.flight_selection.FlightSelectionActivity
@@ -38,9 +40,8 @@ class FlightDataActivity : AppCompatActivity() {
         setInfo()
     }
 
+    @SuppressLint("SimpleDateFormat")
     private fun setInfo() {
-        // Spinner trecho
-        //var options = arrayOf("Ida e volta", "Só ida ou volta")
         val options = arrayOf("Ida")
         flightSpinner.adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, options)
         flightSpinner.setSelection(0)
@@ -73,12 +74,12 @@ class FlightDataActivity : AppCompatActivity() {
                 id: Long
             ) {
                 val selectedItem = flightSpinner.getItemAtPosition(position).toString()
-                if (selectedItem.equals("Ida e volta")) {
-                    dateDestiny.setVisibility(View.VISIBLE)
+                if (selectedItem == "Ida e volta") {
+                    dateDestiny.visibility = View.VISIBLE
                 } else {
-                    dateDestiny.setVisibility(View.GONE)
+                    dateDestiny.visibility = View.GONE
                     editTextDateDestiny.setText("")
-                    editTextDateDestiny.setHint("Quando?")
+                    editTextDateDestiny.hint = "Quando?"
                 }
 
                 validateFields()
@@ -116,7 +117,6 @@ class FlightDataActivity : AppCompatActivity() {
 
         }
 
-        // Calendar
         val year = calendar.get(Calendar.YEAR)
         val month = calendar.get(Calendar.MONTH)
         val day = calendar.get(Calendar.DAY_OF_MONTH)
@@ -125,15 +125,15 @@ class FlightDataActivity : AppCompatActivity() {
         editTextDateOrigin.setOnClickListener {
             val dpd = DatePickerDialog(
                 this,
-                DatePickerDialog.OnDateSetListener { view, mYear, mMonth, mDay ->
-                    val xDay = if(mDay < 10) "0"+mDay else mDay
+                { _, mYear, mMonth, mDay ->
+                    val xDay = if(mDay < 10) "0$mDay" else mDay
                     val xMonth = if((mMonth+1) < 10) "0"+(mMonth+1) else (mMonth+1)
-                    val dateSelect = "" + xDay + "/" + xMonth + "/" + mYear
+                    val dateSelect = "$xDay/$xMonth/$mYear"
 
                     editTextDateOrigin.setText(dateSelect)
-                    editTextDateOrigin.setHint(dateSelect)
+                    editTextDateOrigin.hint = dateSelect
 
-                    viewModel.departureDate.value = editTextDateOrigin.getText().toString()
+                    viewModel.departureDate.value = editTextDateOrigin.text.toString()
                     validateFields()
                 },
                 year,
@@ -147,10 +147,10 @@ class FlightDataActivity : AppCompatActivity() {
         editTextDateDestiny.setOnClickListener {
             val dpd = DatePickerDialog(
                 this,
-                DatePickerDialog.OnDateSetListener { view, mYear, mMonth, mDay ->
+                { _, mYear, mMonth, mDay ->
                     val dateSelect = "" + mDay + "/" + (mMonth+1) + "/" + mYear
                     editTextDateDestiny.setText(dateSelect)
-                    editTextDateDestiny.setHint(dateSelect)
+                    editTextDateDestiny.hint = dateSelect
                     validateFields()
                 },
                 year,
@@ -160,22 +160,22 @@ class FlightDataActivity : AppCompatActivity() {
             dpd.show()
         }
 
-        editTextFlightPassengers.setText("1 adulto(s)")
+        editTextFlightPassengers.setText(getString(R.string.txt_edit_text_passenger))
 
-        btnFooterFlight.footerButton.text = "Escolher voo"
-        btnFooterFlight.footerButton.isEnabled = false
-        btnFooterFlight.footerButton.setOnClickListener {
+        btnFooter.footerButton.text = getString(R.string.search_flight)
+        btnFooter.footerButton.isEnabled = false
+        btnFooter.footerButton.setOnClickListener {
             val intent = Intent(this, FlightSelectionActivity::class.java)
             val format1 = SimpleDateFormat("dd/MM/yyyy")
-            val dt1: Date = format1.parse(editTextDateOrigin.getText().toString())
+            val dt1: Date = format1.parse(editTextDateOrigin.text.toString()) as Date
             val format2: DateFormat = SimpleDateFormat("EEEE")
             val finalDay: String = format2.format(dt1)
 
             intent.putExtra("api_token", token)
-            intent.putExtra("date_flight", editTextDateOrigin.getText().toString())
+            intent.putExtra("date_flight", editTextDateOrigin.text.toString())
             intent.putExtra("day_of_week", dayOfWeek(finalDay))
-            intent.putExtra("flight_departure", flightSpinnerOrigin.getSelectedItem().toString())
-            intent.putExtra("flight_arrival", flightSpinnerDestination.getSelectedItem().toString())
+            intent.putExtra("flight_departure", flightSpinnerOrigin.selectedItem.toString())
+            intent.putExtra("flight_arrival", flightSpinnerDestination.selectedItem.toString())
 
             startActivity(intent)
         }
@@ -189,59 +189,18 @@ class FlightDataActivity : AppCompatActivity() {
         val sheetBinding: ModalSeatsPassengersBinding =
             ModalSeatsPassengersBinding.inflate(layoutInflater, null, false)
 
-        // INCREASE/DESCREASE NUMBER OF PASSAGERS
-        /*
-        sheetBinding.addAdult.setOnClickListener {
-            val quantity = sheetBinding.quantityAdult.text.toString()
-            sheetBinding.quantityAdult.setText("" + (Integer.parseInt(quantity) + 1))
-        }
-        sheetBinding.removeAdult.setOnClickListener {
-            val quantity = sheetBinding.quantityAdult.text.toString()
-            if(Integer.parseInt(quantity) > 1){
-                sheetBinding.quantityAdult.setText("" + (Integer.parseInt(quantity) - 1))
-            }
-        }
-
-        sheetBinding.addChild.setOnClickListener {
-            val quantity = sheetBinding.quantityChild.text.toString()
-            sheetBinding.quantityChild.setText("" + (Integer.parseInt(quantity) + 1))
-            sheetBinding.removeChild.setVisibility(View.VISIBLE)
-            //dateDestiny.setVisibility(View.VISIBLE)
-        }
-        sheetBinding.removeChild.setOnClickListener {
-            val quantity = sheetBinding.quantityChild.text.toString()
-            if(Integer.parseInt(quantity) == 1){
-                sheetBinding.removeChild.setVisibility(View.INVISIBLE)
-            }
-            sheetBinding.quantityChild.setText("" + (Integer.parseInt(quantity) - 1))
-        }
-
-        sheetBinding.addBaby.setOnClickListener {
-            val quantity = sheetBinding.quantityBaby.text.toString()
-            sheetBinding.quantityBaby.setText("" + (Integer.parseInt(quantity) + 1))
-            sheetBinding.removeBaby.setVisibility(View.VISIBLE)
-            //dateDestiny.setVisibility(View.VISIBLE)
-        }
-        sheetBinding.removeBaby.setOnClickListener {
-            val quantity = sheetBinding.quantityBaby.text.toString()
-            if(Integer.parseInt(quantity) == 1){
-                sheetBinding.removeBaby.setVisibility(View.INVISIBLE)
-            }
-            sheetBinding.quantityBaby.setText("" + (Integer.parseInt(quantity) - 1))
-        } */
-
         sheetBinding.btnConfirmSeats.setOnClickListener {
-            val quantity_adult = sheetBinding.quantityAdult.text.toString()
-            var seats = quantity_adult + " adulto(s)"
+            val quantityAdult = sheetBinding.quantityAdult.text.toString()
+            var seats = "$quantityAdult adulto(s)"
 
-            val quantity_child = sheetBinding.quantityChild.text.toString()
-            if(Integer.parseInt(quantity_child) > 0){
-                seats += ", " + quantity_child + " criança(s)"
+            val quantityChild = sheetBinding.quantityChild.text.toString()
+            if(Integer.parseInt(quantityChild) > 0){
+                seats += ", $quantityChild criança(s)"
             }
 
-            val quantity_baby = sheetBinding.quantityBaby.text.toString()
-            if(Integer.parseInt(quantity_baby) > 0){
-                seats += ", " + quantity_baby + " bebê(s)"
+            val quantityBaby = sheetBinding.quantityBaby.text.toString()
+            if(Integer.parseInt(quantityBaby) > 0){
+                seats += ", $quantityBaby bebê(s)"
             }
 
             dialog.dismiss()
@@ -253,7 +212,7 @@ class FlightDataActivity : AppCompatActivity() {
     }
 
     private fun validateFields(){
-        btnFooterFlight.footerButton.isEnabled = viewModel.validateFields()
+        btnFooter.footerButton.isEnabled = viewModel.validateFields()
     }
 
     private fun dayOfWeek(nameDay: String) : String {
