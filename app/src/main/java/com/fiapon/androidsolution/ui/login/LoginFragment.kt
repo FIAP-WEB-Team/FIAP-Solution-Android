@@ -8,8 +8,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import android.widget.Toast
-import androidx.core.os.bundleOf
 import androidx.navigation.fragment.findNavController
 import com.fiapon.androidsolution.R
 import com.fiapon.androidsolution.ui.auth.NAVIGATION_KEY
@@ -29,8 +29,22 @@ class LoginFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        createAutoCompleteFields()
         setListeners()
         setObservers()
+    }
+
+    private fun createAutoCompleteFields() {
+        editTextEmailLogin.setAdapter(ArrayAdapter(
+            requireContext(),
+            com.google.android.material.R.layout.select_dialog_singlechoice_material,
+            arrayOf("rm346790@fiap.com.br")
+        ))
+        editTextPasswordLogin.setAdapter(ArrayAdapter(
+            requireContext(),
+            com.google.android.material.R.layout.select_dialog_singlechoice_material,
+            arrayOf("re23!@agh12#\$")
+        ))
     }
 
     private fun setListeners() {
@@ -75,7 +89,8 @@ class LoginFragment : Fragment() {
         viewModel.loginState.observe(viewLifecycleOwner) {
             when (it) {
                 is RequestState.Error -> {
-                    Toast.makeText(context, it.throwable.message.toString(), Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, it.throwable.message.toString(), Toast.LENGTH_SHORT)
+                        .show()
                 }
                 is RequestState.Success -> {
                     val navId = arguments?.getInt(NAVIGATION_KEY)

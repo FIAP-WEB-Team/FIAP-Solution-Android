@@ -70,4 +70,11 @@
     <string name="successful_booking">Reserva efetuada com sucesso</string>
     <string name="go_back">Voltar ao início</string>
     <string name="login_header">Faça login para continuar</string>
+
+    <!--Login texts-->
+    <string name="email">Email</string>
+    <string name="dummy_email">rm346790@fiap.com.br</string>
+    <string name="password">Senha</string>
+    <string name="dummy_password">re23!@agh12#$</string>
+    <string name="login">Login</string>
 </resources>
