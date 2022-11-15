@@ -61,7 +61,7 @@ class PassengerDataActivity : AppCompatActivity() {
         nationalityEditText.textView.text = getString(R.string.nationality)
         nationalityEditText.editText.hint = getString(R.string.nationality_hint)
 
-        footer.footerButton.text = getString(R.string.goto_payment_text)
+        footer.footerButton.text = getString(R.string.book_flight)
     }
 
     private fun setEditTextFilters() {
@@ -178,7 +178,7 @@ class PassengerDataActivity : AppCompatActivity() {
         if (isLoading) {
             footer.footerButton.text = getString(R.string.loading_text)
         } else {
-            footer.footerButton.text = getString(R.string.goto_payment_text)
+            footer.footerButton.text = getString(R.string.book_flight)
         }
     }
 

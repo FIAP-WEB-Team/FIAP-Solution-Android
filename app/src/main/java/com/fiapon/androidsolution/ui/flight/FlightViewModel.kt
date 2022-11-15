@@ -1,33 +1,29 @@
-package com.fiapon.androidsolution.ui
+package com.fiapon.androidsolution.ui.flight
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 
 class FlightViewModel : ViewModel() {
     var arrival = MutableLiveData("")
-    var arrivalDate = MutableLiveData("")
     var departure = MutableLiveData("")
     var departureDate = MutableLiveData("")
-    var price = MutableLiveData("")
 
     private fun validArrival(): Boolean {
-        return (!arrival.value.equals("Selecione"))
-    }
-
-    private fun validArrivalDate(): Boolean {
-        return arrivalDate.value?.isNotEmpty() ?: false
+        return true
     }
 
     private fun validDeparture(): Boolean {
-        return (!departure.value.equals("Selecione"))
+        return true
     }
 
     private fun validDepartureDate(): Boolean {
-        return departureDate.value?.isNotEmpty() ?: false
-    }
-
-    private fun validPrice(): Boolean {
-        return price.value?.isNotEmpty() ?: false
+        if (departureDate.value?.isNotEmpty() == true){
+            val localDate = LocalDate.parse(departureDate.value!!, DateTimeFormatter.ofPattern("dd/MM/yyyy"))
+            return LocalDate.now() <= localDate
+        }
+        return false
     }
 
     fun validateFields(): Boolean {

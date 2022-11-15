@@ -26,27 +26,28 @@ class FlightSelectionFragment : BaseAuthFragment() {
     private lateinit var viewModel: FlightSelectionViewModel
     private lateinit var adapter: FlightSelectionAdapter
     private var token: String? = null
-    private var date_flight: String? = null
-    private var day_of_week: String? = null
-    private var flight_arrival: String? = null
-    private var flight_departure: String? = null
+    private var dateFlight: String? = null
+    private var dayOfWeek: String? = null
+    private var flightArrival: String? = null
+    private var flightDeparture: String? = null
     private var flightData: MutableList<Flight> = mutableListOf<Flight>()
 
+    @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         viewModel =
             ViewModelProvider.NewInstanceFactory().create(FlightSelectionViewModel::class.java)
         token = requireActivity().intent?.extras?.getString("api_token")
-        date_flight = requireActivity().intent?.extras?.getString("date_flight")
-        day_of_week = requireActivity().intent?.extras?.getString("day_of_week")
-        flight_arrival = requireActivity().intent?.extras?.getString("flight_arrival")
-        flight_departure = requireActivity().intent?.extras?.getString("flight_departure")
+        dateFlight = requireActivity().intent?.extras?.getString("date_flight")
+        dayOfWeek = requireActivity().intent?.extras?.getString("day_of_week")
+        flightArrival = requireActivity().intent?.extras?.getString("flight_arrival")
+        flightDeparture = requireActivity().intent?.extras?.getString("flight_departure")
         adapter = FlightSelectionAdapter(viewModel, flightData)
 
         viewModel.loadFlights(token!!)
 
-        dateInfo.text = day_of_week + ", " + date_flight + " \n - A partir de 643,00"
+        dateInfo.text = "$dayOfWeek, $dateFlight \n - A partir de 643,00"
 
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(context)
@@ -70,6 +71,13 @@ class FlightSelectionFragment : BaseAuthFragment() {
         }
     }
 
+    private fun filterFlights(flights: List<Flight>) : List<Flight> {
+        return flights.filter {
+            it.arrival.contains(flightArrival!!, true) && it.departure.contains(
+                flightDeparture!!, true)
+        }
+    }
+
     @SuppressLint("NotifyDataSetChanged")
     private fun createObservers() {
 
@@ -87,12 +95,15 @@ class FlightSelectionFragment : BaseAuthFragment() {
         viewModel.flightLoadingStatus.observe(viewLifecycleOwner) {
             when (it) {
                 is RequestState.Error -> {
-                    Toast.makeText(context, it.throwable.message.toString(), Toast.LENGTH_LONG).show()
+                    Toast.makeText(context, it.throwable.message.toString(), Toast.LENGTH_LONG)
+                        .show()
                 }
                 is RequestState.Loading -> {}
                 is RequestState.Success -> {
                     flightData.clear()
-                    flightData.addAll(it.data)
+                    flightData.addAll(filterFlights(it.data))
+                    if (flightData.size == 0)
+                        viewModel.setNumFlights(0)
                     adapter.notifyDataSetChanged()
                 }
             }

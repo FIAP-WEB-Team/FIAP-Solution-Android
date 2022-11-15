@@ -5,12 +5,12 @@ import android.app.DatePickerDialog
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.widget.*
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.fiapon.androidsolution.R
 import com.fiapon.androidsolution.databinding.ModalSeatsPassengersBinding
-import com.fiapon.androidsolution.ui.FlightViewModel
 import com.fiapon.androidsolution.ui.flight_selection.FlightSelectionActivity
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import kotlinx.android.synthetic.main.activity_flight_data.*
@@ -40,6 +40,10 @@ class FlightDataActivity : AppCompatActivity() {
         setInfo()
     }
 
+    override fun onBackPressed() {
+        moveTaskToBack(true)
+    }
+
     @SuppressLint("SimpleDateFormat")
     private fun setInfo() {
         val options = arrayOf("Ida")
@@ -47,20 +51,25 @@ class FlightDataActivity : AppCompatActivity() {
         flightSpinner.setSelection(0)
 
         // Spinner destination origin
-        val optionsDestination = arrayOf(
-            "Selecione",
+        val optionsOrigin = arrayOf(
+            "Qualquer origem",
+            "Maceió",
             "Barcelona",
-            "Budapeste",
-            "Cairo",
             "Campinas",
-            "Curitiba",
+            "Cairo",
             "Pequim",
+        )
+
+        val optionsDestination = arrayOf(
+            "Qualquer destino",
+            "Curitiba",
+            "Budapeste",
             "Ushaia",
+            "Vancouver",
             "Seul",
-            "Vancouver"
         )
         flightSpinnerOrigin.adapter =
-            ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, optionsDestination)
+            ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, optionsOrigin)
         flightSpinnerDestination.adapter =
             ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, optionsDestination)
 
@@ -171,11 +180,14 @@ class FlightDataActivity : AppCompatActivity() {
             val format2: DateFormat = SimpleDateFormat("EEEE")
             val finalDay: String = format2.format(dt1)
 
+            val origin = flightSpinnerOrigin.selectedItem.toString()
+            val destiny = flightSpinnerDestination.selectedItem.toString()
+
             intent.putExtra("api_token", token)
             intent.putExtra("date_flight", editTextDateOrigin.text.toString())
             intent.putExtra("day_of_week", dayOfWeek(finalDay))
-            intent.putExtra("flight_departure", flightSpinnerOrigin.selectedItem.toString())
-            intent.putExtra("flight_arrival", flightSpinnerDestination.selectedItem.toString())
+            intent.putExtra("flight_departure", if (origin == "Qualquer origem") "" else origin)
+            intent.putExtra("flight_arrival", if (destiny == "Qualquer destino") "" else destiny)
 
             startActivity(intent)
         }

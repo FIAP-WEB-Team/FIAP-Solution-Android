@@ -10,14 +10,18 @@
         android:id="@+id/include"
         layout="@layout/action_bar" />
 
-    <Button
-        android:id="@+id/btnFlightSelection"
-        android:layout_width="wrap_content"
+    <TextView
+        android:id="@+id/textViewSlogan"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
-        android:text="Selecionar voos"
+        android:layout_marginBottom="64dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:text="@string/slogan"
+        android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/include" />
+        app:layout_constraintTop_toBottomOf="@+id/include"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

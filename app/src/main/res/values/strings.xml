@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">AndroidSolution</string>
     <string name="gol_name">GOL</string>
 
@@ -26,7 +26,7 @@
     <string name="gender">GÊNERO:</string>
     <string name="nationality">NACIONALIDADE:</string>
     <string name="nationality_hint">País</string>
-    <string name="goto_payment_text">Ir para Pagamento</string>
+    <string name="book_flight">Finalizar reserva</string>
     <string name="loading_text">Carregando…</string>
     <string name="any_text">Any</string>
     <string name="yes_text">Sim</string>
@@ -41,6 +41,7 @@
     <string name="lock_content_description">Cadeadro laranja</string>
     <string name="loading_flights">Carregando voos…</string>
     <string name="error_loading_flight">Erro ao procurar por voo</string>
+    <string name="server_error" tools:ignore="Typos">Mundo indisponível no momento</string>
 
     <!--Flight data texts-->
     <string name="txt_text_view_destiny_date">DATA DA VIAGEM DE VOLTA</string>
@@ -77,4 +78,5 @@
     <string name="password">Senha</string>
     <string name="dummy_password">re23!@agh12#$</string>
     <string name="login">Login</string>
+    <string name="slogan">Carregando um novo mundo de possibilidades…</string>
 </resources>
